@@ -1,0 +1,66 @@
+global_vars:
+  - name: snipbank_python
+    type: shell
+    params:
+      cmd: "which python3"
+
+matches:
+  - trigger: ",,.."
+    replace: "{{stdout}}"
+    vars:
+      - name: "f"
+        type: form
+        params:
+          layout: "SnipBank: Add Trigger\n\nTrigger:\n[[trigger]]\nSnippet:\n[[snippet]]\nMode:\n[[mode]]"
+          fields:
+            snippet:
+              multiline: true
+            mode:
+              type: choice
+              default: paste
+              values:
+                - paste
+                - silent
+      - name: stdout
+        type: script
+        params:
+          trim: false
+          args:
+            - "{{snipbank_python}}"
+            - "%CONFIG%/match/packages/snipbank/addtrigger.py"
+            - "{{f.trigger}}"
+            - "{{f.snippet}}"
+            - "{{f.mode}}"
+  - trigger: "..,,"
+    replace: "{{stdout}}"
+    vars:
+      - name: list_triggers
+        type: script
+        params:
+          trim: true
+          args:
+            - "{{snipbank_python}}"
+            - "%CONFIG%/match/packages/snipbank/listtriggers.py"
+      - name: "f"
+        type: form
+        params:
+          layout: "SnipBank: Remove Trigger\n\nTrigger:\n[[trigger]]\nMode:\n[[mode]]"
+          fields:
+            trigger:
+              type: list
+              values: "{{list_triggers}}"
+            mode:
+              type: choice
+              default: paste
+              values:
+                - paste
+                - silent
+      - name: stdout
+        type: script
+        params:
+          trim: false
+          args:
+            - "{{snipbank_python}}"
+            - "%CONFIG%/match/packages/snipbank/removetrigger.py"
+            - "{{f.trigger}}"
+            - "{{f.mode}}"
