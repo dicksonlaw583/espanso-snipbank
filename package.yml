@@ -8,6 +8,15 @@ matches:
   - trigger: ",,.."
     replace: "{{stdout}}"
     vars:
+      - name: "last_choice"
+        type: script
+        params:
+          args:
+            - "{{snipbank_python}}"
+            - "%CONFIG%/match/packages/snipbank/lastused.py"
+            - get
+            - mode
+            - paste
       - name: "f"
         type: form
         params:
@@ -17,7 +26,7 @@ matches:
               multiline: true
             mode:
               type: choice
-              default: paste
+              default: "{{last_choice}}"
               values:
                 - paste
                 - silent
@@ -31,6 +40,15 @@ matches:
             - "{{f.trigger}}"
             - "{{f.snippet}}"
             - "{{f.mode}}"
+      - name: set_last_choice
+        type: script
+        params:
+          args:
+            - "{{snipbank_python}}"
+            - "%CONFIG%/match/packages/snipbank/lastused.py"
+            - set
+            - mode
+            - "{{f.mode}}"
   - trigger: "..,,"
     replace: "{{stdout}}"
     vars:
@@ -41,6 +59,15 @@ matches:
           args:
             - "{{snipbank_python}}"
             - "%CONFIG%/match/packages/snipbank/listtriggers.py"
+      - name: "last_choice"
+        type: script
+        params:
+          args:
+            - "{{snipbank_python}}"
+            - "%CONFIG%/match/packages/snipbank/lastused.py"
+            - get
+            - mode
+            - paste
       - name: "f"
         type: form
         params:
@@ -51,7 +78,7 @@ matches:
               values: "{{list_triggers}}"
             mode:
               type: choice
-              default: paste
+              default: "{{last_choice}}"
               values:
                 - paste
                 - silent
@@ -63,4 +90,13 @@ matches:
             - "{{snipbank_python}}"
             - "%CONFIG%/match/packages/snipbank/removetrigger.py"
             - "{{f.trigger}}"
+            - "{{f.mode}}"
+      - name: set_last_choice
+        type: script
+        params:
+          args:
+            - "{{snipbank_python}}"
+            - "%CONFIG%/match/packages/snipbank/lastused.py"
+            - set
+            - mode
             - "{{f.mode}}"
