@@ -13,6 +13,11 @@ Easily collect snippets and recall them later.
 - Use `,,..` (two commas, two dots) to add a snippet.
 - Use `..,,` (two dots, two commas) to remove a snippet.
 
+## Special: Pressing Tab and Enter
+
+- Use `^TAB^` in a snippet for pressing the Tab key.
+- Use `^ENTER^` in a snippet for pressing the Enter key.
+
 ## Paste/Silent Mode
 
 When using `paste` mode (default), the snippet's replacement is printed. This
