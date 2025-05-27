@@ -17,6 +17,7 @@ def addTrigger(rootFile, trigger, snippet, reprint=False):
         print(rectifiedSnippet, end='')
 
 if __name__ == '__main__':
+    # Syntax: python3 addtrigger.py <trigger> <snippet> <paste|silent>
     if not sys.argv[1]:
         exit(0)
-    addTrigger(getSnipBankRootFile(), sys.argv[1], sys.argv[2], sys.argv[3] == 'paste')
+    addTrigger(getSnipBankRootFile(), sys.argv[1], sys.argv[2], reprint=sys.argv[3] == 'paste')

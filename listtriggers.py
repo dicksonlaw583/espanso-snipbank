@@ -13,4 +13,5 @@ def listTriggers(rootFile):
         print(match['trigger'])
 
 if __name__ == '__main__':
+    # Syntax: python3 listtriggers.py
     listTriggers(getSnipBankRootFile())

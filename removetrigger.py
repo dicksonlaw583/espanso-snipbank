@@ -25,6 +25,7 @@ def getTriggerReplacement(rootFile, trigger):
     return ''
 
 if __name__ == '__main__':
+    # Syntax: python3 removetrigger.py <trigger> <paste|silent>
     if not sys.argv[1].strip():
         exit(0)
     rootFile = getSnipBankRootFile()
