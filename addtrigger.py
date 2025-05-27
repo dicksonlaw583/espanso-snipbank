@@ -54,7 +54,7 @@ def getEspansoFormVar(formText, name=formPrefix):
     
     # Replace layout elements
     for regex in (textFieldRegex, textAreaRegex, dropdownRegex, multiSelectRegex):
-        layout = textFieldRegex.sub('[[\\1]]', layout)
+        layout = regex.sub('[[\\1]]', layout)
 
     # Form body
     body = {
