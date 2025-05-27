@@ -41,6 +41,7 @@ def getEspansoFormVar(formText, name=formPrefix):
         fieldChoices = match[3].split('|')
         fields[fieldName] = {
             "type": "choice",
+            "default": fieldDefault,
             "values": fieldChoices
         }
     for match in multiSelectRegex.finditer(formText):
@@ -49,6 +50,7 @@ def getEspansoFormVar(formText, name=formPrefix):
         fieldChoices = match[3].split('|')
         fields[fieldName] = {
             "type": "choice",
+            "default": fieldDefault,
             "values": fieldChoices
         }
     
