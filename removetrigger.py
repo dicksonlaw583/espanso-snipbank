@@ -21,7 +21,7 @@ def getTriggerReplacement(rootFile, trigger):
         data = yaml.load(rootFh, Loader=yaml.BaseLoader)
     for match in data['matches']:
         if match['trigger'] == trigger:
-            return match['replace']
+            return match['replace'] if 'vars' not in match else ''
     return ''
 
 if __name__ == '__main__':

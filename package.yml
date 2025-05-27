@@ -20,9 +20,11 @@ matches:
       - name: "f"
         type: form
         params:
-          layout: "SnipBank: Add Trigger\n\nTrigger:\n[[trigger]]\nSnippet:\n[[snippet]]\nMode:\n[[mode]]"
+          layout: "SnipBank: Add Trigger\n\nTrigger:\n[[trigger]]\nSnippet:\n[[snippet]]\nForm:\n[[form]]\nMode:\n[[mode]]"
           fields:
             snippet:
+              multiline: true
+            form:
               multiline: true
             mode:
               type: choice
@@ -39,6 +41,7 @@ matches:
             - "%CONFIG%/match/packages/snipbank/addtrigger.py"
             - "{{f.trigger}}"
             - "{{f.snippet}}"
+            - "{{f.form}}"
             - "{{f.mode}}"
       - name: set_last_choice
         type: script
