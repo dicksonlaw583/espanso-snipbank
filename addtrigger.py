@@ -18,7 +18,7 @@ def getEspansoFormVar(formText, name=formPrefix):
     textFieldRegex = re.compile(r'\[\[([\w_]+)(=?[^\]]*)\]\]')
     textAreaRegex = re.compile(r'\[\!\[([\w_]+)(=?[^\]]*)\]\!\]')
     dropdownRegex = re.compile(r'\[\^\[([\w_]+)(=?[^:]*):([^\]]*)\]\^\]')
-    multiSelectRegex = re.compile(r'\[\^\[([\w_]+)(=?[^:]*):([^\]]*)\]\^\]')
+    listSelectRegex = re.compile(r'\[\>\[([\w_]+)(=?[^:]*):([^\]]*)\]\<\]')
     
     # Populate fields
     for match in textFieldRegex.finditer(formText):
@@ -44,18 +44,18 @@ def getEspansoFormVar(formText, name=formPrefix):
             "default": fieldDefault,
             "values": fieldChoices
         }
-    for match in multiSelectRegex.finditer(formText):
+    for match in listSelectRegex.finditer(formText):
         fieldName = match[1]
         fieldDefault = match[2][1:]
         fieldChoices = match[3].split('|')
         fields[fieldName] = {
-            "type": "choice",
+            "type": "list",
             "default": fieldDefault,
             "values": fieldChoices
         }
     
     # Replace layout elements
-    for regex in (textFieldRegex, textAreaRegex, dropdownRegex, multiSelectRegex):
+    for regex in (textFieldRegex, textAreaRegex, dropdownRegex, listSelectRegex):
         layout = regex.sub('[[\\1]]', layout)
 
     # Form body
