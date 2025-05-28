@@ -69,7 +69,7 @@ def getEspansoFormVar(formText, name=formPrefix):
     }
     return body
 
-def addTrigger(rootFile, trigger, snippet, form, reprint=False):
+def addTrigger(rootFile, trigger, snippet, form, replaceType, reprint=False):
     '''
     Add a regular trigger to a match YAML file.
     '''
@@ -79,7 +79,7 @@ def addTrigger(rootFile, trigger, snippet, form, reprint=False):
         data = yaml.load(rootFh, Loader=yaml.BaseLoader)
     replacement = {
         "trigger": trigger,
-        "replace": rectifiedSnippet,
+        replaceType: rectifiedSnippet,
     }
     if form:
         replacement['vars'] = [getEspansoFormVar(form)]
@@ -91,7 +91,7 @@ def addTrigger(rootFile, trigger, snippet, form, reprint=False):
         print(rectifiedSnippet, end='')
 
 if __name__ == '__main__':
-    # Syntax: python3 addtrigger.py <trigger> <snippet> <form> <paste|silent>
+    # Syntax: python3 addtrigger.py <trigger> <snippet> <form> <replacetype> <paste|silent>
     if not sys.argv[1]:
         exit(0)
-    addTrigger(getSnipBankRootFile(), sys.argv[1], sys.argv[2], sys.argv[3], reprint=sys.argv[4] == 'paste' and not sys.argv[3])
+    addTrigger(getSnipBankRootFile(), sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], reprint=sys.argv[5] == 'paste' and not sys.argv[3])

@@ -33,6 +33,16 @@ parts of the snippet editable before its insertion.
 `[[name=Anonymous]]`, `[^[greeting=Hello:Hello|Goodbye]^]`
 - Use `{{variable_name}}` in the snippet to reference a form field.
 
+## Rich Text Snippets
+
+You may use Markdown or HTML to include rich text in your snippets.
+
+- `replace`: (Default) Use plain text replacements.
+- `markdown`: Markdown can be used in snippets.
+- `html`: HTML can be used in snippets.
+
+Notice that if you choose `markdown` or `html` and your snippet contains form input, the values from your form will also be interpreted as Markdown or HTML respectively.
+
 ## Paste/Silent Mode
 
 When using `paste` mode (default), the snippet's replacement is printed. This

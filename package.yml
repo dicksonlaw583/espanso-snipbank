@@ -20,7 +20,7 @@ matches:
       - name: "f"
         type: form
         params:
-          layout: "SnipBank: Add Trigger\n\nTrigger:\n[[trigger]]\nSnippet:\n[[snippet]]\nForm:\n[[form]]\nMode:\n[[mode]]"
+          layout: "SnipBank: Add Trigger\n\nTrigger:[[trigger]]\nSnippet:[[snippet]]\nType:[[replacetype]]\nMode:[[mode]]\nForm:[[form]]"
           fields:
             snippet:
               multiline: true
@@ -32,6 +32,13 @@ matches:
               values:
                 - paste
                 - silent
+            replacetype:
+              type: choice
+              default: replace
+              values:
+                - replace
+                - markdown
+                - html
       - name: stdout
         type: script
         params:
@@ -42,6 +49,7 @@ matches:
             - "{{f.trigger}}"
             - "{{f.snippet}}"
             - "{{f.form}}"
+            - "{{f.replacetype}}"
             - "{{f.mode}}"
       - name: set_last_choice
         type: script
