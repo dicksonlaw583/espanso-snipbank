@@ -5,7 +5,7 @@ Easily collect snippets and recall them later.
 ## Requirements
 
 - Espanso 2.x or higher
-- Python 3.0 or higher with Pip
+- Python 3.x with Pip
     - PyYAML 5.x or higher (install with `pip3 install pyyaml`)
 
 ## Keyboard Shortcuts
