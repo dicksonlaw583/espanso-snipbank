@@ -84,6 +84,7 @@ def addTrigger(rootFile, trigger, snippet, form, reprint=False):
     if form:
         replacement['vars'] = [getEspansoFormVar(form)]
     data['matches'].append(replacement)
+    data['matches'].sort(key=lambda m : m['trigger'].upper())
     with open(rootFile, 'w') as rootFh:
         yaml.dump(data, rootFh)
     if reprint:
