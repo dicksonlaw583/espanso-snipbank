@@ -3,5 +3,5 @@ description: Easily configure custom snippets without manually editing the Espan
 name: snipbank
 title: SnipBank
 version: 0.0.0
-homepage: "https://github.com/dicksonlaw583/snipbank-espanso"
+homepage: "https://github.com/dicksonlaw583/espanso-snipbank"
 tags: ["clipboard", "utility"]
