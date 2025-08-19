@@ -1,12 +1,19 @@
 # SnipBank
 
-Easily collect snippets and recall them later.
+Easily collect snippets and recall them later with Espanso.
 
 ## Requirements
 
 - Espanso 2.x or higher
-- Python 3.x with Pip
-    - PyYAML 5.x or higher (install with `pip3 install pyyaml`)
+- Python 3.x or higher with Pip
+- PyYAML 5.x or higher
+
+## Installation
+
+```bash
+pip install pyyaml
+espanso install snipbank
+```
 
 ## Keyboard Shortcuts
 
