@@ -51,6 +51,7 @@ def getProperty(property, defaultValue='', file=getLastUsedRootFile()):
 
 if __name__ == '__main__':
     # Syntax: python3 lastused.py get <name> <defaultvalue>
+    sys.stdout.reconfigure(encoding='utf-8')
     if sys.argv[1] == 'get':
         print(getProperty(sys.argv[2], sys.argv[3]), end='')
     # Syntax: python3 lastused.py set <name> <value>

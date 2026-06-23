@@ -14,4 +14,5 @@ def listTriggers(rootFile):
 
 if __name__ == '__main__':
     # Syntax: python3 listtriggers.py
+    sys.stdout.reconfigure(encoding='utf-8')
     listTriggers(getSnipBankRootFile())

@@ -92,6 +92,7 @@ def addTrigger(rootFile, trigger, snippet, form, replaceType, reprint=False):
 
 if __name__ == '__main__':
     # Syntax: python3 addtrigger.py <trigger> <snippet> <form> <replacetype> <paste|silent>
+    sys.stdout.reconfigure(encoding='utf-8')
     if not sys.argv[1]:
         exit(0)
     addTrigger(getSnipBankRootFile(), sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], reprint=sys.argv[5] == 'paste' and not sys.argv[3])
