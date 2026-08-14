@@ -20,8 +20,11 @@ def getTriggerReplacement(rootFile, trigger):
     with open(rootFile, 'r') as rootFh:
         data = yaml.load(rootFh, Loader=yaml.BaseLoader)
     for match in data['matches']:
-        if match['trigger'] == trigger:
-            return match['replace'] if 'vars' not in match else ''
+        if 'vars' in match:
+            return ''
+        for field in ('markdown', 'html', 'replace'):
+            if field in match:
+                return match[field]
     return ''
 
 if __name__ == '__main__':
